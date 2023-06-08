@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+#define int long long
+
+using namespace std;
+
+const int N=1e5+5;
+int n,m;
+int dis[N];
+vector<int>adj[N];
+
+void init(int n){
+    for(int i=1;i<=n;i++){
+        dis[i]=-1;
+    }
+}
+void addedge(int a,int b){
+    adj[a].push_back(b);
+    adj[b].push_back(a);
+}
+void bfs(int source){
+    queue<int>q;
+    q.push(source);
+    dis[source]=0;
+    while(!q.empty()){
+        int u=q.front();
+        q.pop();
+        for(auto r:adj[u]){
+            if(dis[r]==-1){
+                dis[r]=dis[u]+1;
+                q.push(r);
+            }
+        }
+    }
+}
+int32_t main()
+{
+    cin>>n>>m;
+    for(int i=0;i<m;i++){
+        int a;int b;
+        cin>>a>>b;
+        addedge(a,b);
+    }
+    int source;cin>>source;
+    bfs(source);
+
+    return 0;
+}

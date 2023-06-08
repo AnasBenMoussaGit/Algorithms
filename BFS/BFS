@@ -35,6 +35,7 @@ void bfs(int source){
 int32_t main()
 {
     cin>>n>>m;
+    init(n);
     for(int i=0;i<m;i++){
         int a;int b;
         cin>>a>>b;
